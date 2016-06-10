@@ -21,7 +21,8 @@ Route::get('/home', 'HomeController@index');
 
 Route::group([
     'namespace' => 'Api',
-    'prefix' => 'api'
+    'prefix' => 'api/v1',
+    'middleware' => 'api',
 ], function () {
-    Route::get('today', 'TodayController@index');
+    Route::get('rates/{currency}/{when?}', 'RateController@index');
 });
