@@ -1,2 +1,11 @@
-// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+.news-title {
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
+.news-body {
+    color: $gray;
+    font-size: 1.2em;
+}
