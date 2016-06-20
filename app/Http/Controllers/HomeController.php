@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Stock;
+use App\FavoriteStock;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -24,6 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $stocks = Stock::all();
+        $favorites = FavoriteStock::all();
+        return view('home', compact('stocks', 'favorites'));
     }
 }

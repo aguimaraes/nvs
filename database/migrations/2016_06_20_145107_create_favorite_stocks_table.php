@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStocksTable extends Migration
+class CreateFavoriteStocksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,12 @@ class CreateStocksTable extends Migration
      */
     public function up()
     {
-        Schema::create('stocks', function (Blueprint $table) {
-            $table->string('acronym', 5)->unique();
-            $table->string('name', 255);
-            $table->primary('acronym');
+        Schema::create('favorite_stocks', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('stock', 5)
+                ->foreign('stock')
+                ->references('acronym')
+                ->on('stocks');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateStocksTable extends Migration
      */
     public function down()
     {
-        Schema::drop('stocks');
+        Schema::drop('favorite_stocks');
     }
 }

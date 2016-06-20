@@ -19,6 +19,12 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
+Route::post('favorite/add', 'FavoriteStockController@add')
+    ->name('favorite.add');
+
+Route::get('stock/{stock}/show', 'StockController@show')
+    ->name('stock.show');
+
 Route::group([
     'namespace' => 'Api',
     'prefix' => 'api/v1',

@@ -2,9 +2,10 @@
 
 namespace App\Console;
 
-use App\Console\Commands\LatestExchangeRates;
 use App\Console\Commands\UpdateCurrencies;
 use Illuminate\Console\Scheduling\Schedule;
+use App\Console\Commands\UpdateStockSymbols;
+use App\Console\Commands\LatestExchangeRates;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
@@ -17,6 +18,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         UpdateCurrencies::class,
         LatestExchangeRates::class,
+        UpdateStockSymbols::class,
     ];
 
     /**

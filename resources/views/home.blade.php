@@ -16,20 +16,30 @@
         </div>
         <div class="col-md-2">
             <div class="panel panel-default">
+                <form action="{{ route('favorite.add') }}" method="post">
+                    {!! csrf_field() !!}
+                    <div class="panel-heading">Add Stock</div>
+                    <div class="panel-body">
+                        <select name="acronym" id="acronym" class="form-control">
+                            @foreach ($stocks as $stock) <option value="{{ $stock->acronym }}">{{ $stock->acronym }}</option>@endforeach
+                        </select>
+                    </div>
+                    <div class="panel-footer">
+                        <button type="submit" class="btn btn-success">Add</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="panel panel-default">
                 <div class="panel-heading">Favorites</div>
 
                 <div class="panel-body">
                     <ul class="nav nav-pills nav-stacked">
-                        <li class="active">
-                            <a href="#">AAPL</a>
-                        </li>
-                        <li><a href="#">AVHI</a></li>
-                        <li><a href="#">AIR</a></li>
-                        <li><a href="#">WMS</a></li>
-                        <li><a href="#">ALG</a></li>
-                        <li><a href="#">AP</a></li>
-                        <li><a href="#">ARCW</a></li>
-                        <li><a href="#">BZH</a></li>
+                        @forelse ($favorites as $favorite)
+                            <li><a href="{!! route('stock.show', $favorite->stock) !!}">{{ $favorite->stock }}</a></li>
+                        @empty
+                            <li>None.</li>
+                        @endforelse
                     </ul>
                 </div>
             </div>
